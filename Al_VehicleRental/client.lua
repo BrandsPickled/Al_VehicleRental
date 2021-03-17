@@ -85,7 +85,7 @@ function LoadMarkers()
                             local type = Marker['Type'] --Collects vehicle type to give correct vehicle listings in ESX UI
                             OpenRentVehicleMenu(VS['x'], VS['y'], VS['z'], VS['Heading'], type)
                         elseif IsControlJustPressed(0, 38) and IsPedInAnyVehicle(GetPlayerPed(-1), false) then  --If they are in a vehicle
-                            exports['mythic_notify']:DoLongHudText('error', 'You cannot be in a vehicle!')
+                            exports['mythic_notify']:SendAlert('error', 'You cannot be in a vehicle!')
                         end
                     end
                 end
@@ -115,7 +115,7 @@ function LoadMarkers()
                                     -- Checks if vehicle player is trying to return is a rental or not
                                     if GetEntityModel(GetVehiclePedIsIn(GetPlayerPed(-1), false)) == GetHashKey(RC) or GetEntityModel(GetVehiclePedIsIn(GetPlayerPed(-1), false)) == GetHashKey(CR) and GetPedInVehicleSeat(GetVehiclePedIsIn(GetPlayerPed(-1), false), -1) == GetPlayerPed(-1) then
                                         ESX.Game.DeleteVehicle(GetVehiclePedIsIn(GetPlayerPed(-1), false))
-                                        exports['mythic_notify']:DoLongHudText('inform', 'You returned your rental!')
+                                        exports['mythic_notify']:SendAlert('inform', 'You returned your rental!')
                                     end
                                 end
                             end
@@ -161,7 +161,7 @@ function OpenRentVehicleMenu(x, y, z, heading, type)
         if not DoesEntityExist(closevehicle) then   --If there is no vehicle in the way, the rental will spawn
             TriggerServerEvent('Al_RentVehicle', x, y, z, heading, data.current.value, data.current.model)
         elseif DoesEntityExist(closevehicle) then   --If there is a vehicle in the way, then an error message will appear
-            exports['mythic_notify']:DoLongHudText('error', 'There is a vehicle in the way!')
+            exports['mythic_notify']:SendAlert('error', 'There is a vehicle in the way!')
         end
 	end, function(data, menu)
 		menu.close()
