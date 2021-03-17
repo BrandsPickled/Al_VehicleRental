@@ -1,4 +1,6 @@
--- Script Made By Aljunier | Made For ESX Framework --
+-- Script Made By Aljunier --
+-- Updated by BrandsPickled --
+-- Discord BrandsPickled#1337 --
 
 ESX                           = nil
 local PlayerData              = {}
