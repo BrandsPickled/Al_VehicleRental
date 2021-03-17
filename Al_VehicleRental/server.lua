@@ -13,7 +13,7 @@ AddEventHandler('Al_RentVehicle', function (x, y, z, heading, price, vehicle)
 	local xPlayer = ESX.GetPlayerFromId(source)
 
 	--ESX Gets players' money and removed it if they got the money to rent
-	if xPlayer.get('money') >= price then
+	if xPlayer.getMoney() >= price then
 		xPlayer.removeMoney(price)
 
 		TriggerClientEvent('mythic_notify:client:SendAlert', source, { type = 'success', text = 'You Paid For Your Rental. Enjoy!', length = 6000 })
